@@ -16,6 +16,10 @@ module.exports = {
       fontFamily: {
         primary: ["Rubik", "sans-serif"],
       },
+      backgroundImage: {
+        "desktop-light":
+          "url('./assets/images/pattern-background-desktop-light.svg')",
+      },
     },
   },
   plugins: [],
