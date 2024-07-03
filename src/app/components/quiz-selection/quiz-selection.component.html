@@ -2,17 +2,17 @@
   class="md:w-5/6 md:mx-auto md:py-5 md:px-0 py-10 px-4 lg:grid lg:grid-cols-2 flex flex-col justify-between lg:gap-0 gap-16"
 >
   <div>
-    <h1 class="text-darkNavy text-5xl font-thin">
+    <h1 class="text-darkNavy text-6xl font-thin dark:text-white">
       Welcome to the <br /><span class="font-medium">Frontend Quiz!</span>
     </h1>
-    <p class="mt-10 text-greyNavy text-xl italic">
+    <p class="mt-10 text-greyNavy dark:text-lightBlue text-lg italic">
       Pick a subject to get started.
     </p>
   </div>
   <div class="flex flex-col gap-5">
     @for (subject of subjects; track $index) {
     <div
-      class="flex justify-start gap-3 items-center bg-white w-full p-4 rounded-3xl shadow-lg"
+      class="flex justify-start gap-3 items-center bg-white bg-opacity-80 dark:bg-navy dark:bg-opacity-80 w-full p-4 rounded-3xl shadow"
     >
       <div
         [ngClass]="{
@@ -21,11 +21,13 @@
               'bg-blue': subject.title === 'JavaScript',
               'bg-purple': subject.title === 'Accessibility',
               }"
-        class="bg-opacity-10 p-2 rounded-lg"
+        class="bg-opacity-15 dark:bg-opacity-25 p-1 rounded-lg"
       >
         <img [src]="subject.icon" alt="icon" />
       </div>
-      <h1 class="text-3xl text-darkNavy font-medium">{{ subject.title }}</h1>
+      <h1 class="text-3xl text-darkNavy dark:text-white font-medium">
+        {{ subject.title }}
+      </h1>
     </div>
     }
   </div>

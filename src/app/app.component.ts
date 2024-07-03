@@ -25,17 +25,9 @@ export class AppComponent implements OnInit {
 
   fetchSubjects(): void {
     this.quizService.getSubjects().subscribe((subjects) => {
-      this.subjects = subjects.map((subject, index) => ({
-        ...subject,
-        backgroundColor: this.getIconBackground(index),
-      }));
+      this.subjects = subjects;
     });
     console.log('subs', this.subjects);
-  }
-
-  getIconBackground(index: number) {
-    const colors = ['#FF7E35', '#2FD887', '#306AFF', '#A729F5'];
-    return colors[index % colors.length];
   }
 
   switchThemes = () => {
