@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   title = 'frontend-quiz-app';
   switchedToDarkMode = false;
   subjects: any[] = [];
+  questions: any[] = [];
 
   constructor(private quizService: QuizService) {}
 
@@ -27,6 +28,11 @@ export class AppComponent implements OnInit {
     this.subjects = this.quizService.getSubjects();
 
     console.log('subs', this.subjects);
+  }
+
+  fetchQuestions(subjectTitle: string): void {
+    this.questions = this.quizService.getQuestions(subjectTitle);
+    console.log('questions', this.questions);
   }
 
   switchThemes = () => {

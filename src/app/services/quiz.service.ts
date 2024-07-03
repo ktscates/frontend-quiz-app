@@ -16,4 +16,9 @@ export class QuizService {
     }));
     return quizzTitles;
   }
+
+  getQuestions(subjectTitle: string) {
+    const quizSubject = QUIZZES.find((quiz) => quiz.title === subjectTitle);
+    return quizSubject ? quizSubject.questions : [];
+  }
 }

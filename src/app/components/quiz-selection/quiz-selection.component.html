@@ -11,8 +11,8 @@
   </div>
   <div class="flex flex-col gap-5">
     @for (subject of subjects; track $index) {
-    <div
-      class="flex justify-start gap-3 items-center bg-white bg-opacity-80 dark:bg-navy dark:bg-opacity-80 w-full p-4 rounded-3xl shadow"
+    <button
+      class="flex justify-start gap-3 items-center bg-white bg-opacity-80 cursor-pointer dark:bg-navy dark:bg-opacity-80 w-full p-4 rounded-2xl shadow"
     >
       <div
         [ngClass]="{
@@ -28,7 +28,7 @@
       <h1 class="text-3xl text-darkNavy dark:text-white font-medium">
         {{ subject.title }}
       </h1>
-    </div>
+    </button>
     }
   </div>
 </div>
