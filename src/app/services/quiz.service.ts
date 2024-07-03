@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { QUIZZES } from '../../data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuizService {
-  private quizData = '../../data.json';
+  constructor() {}
 
-  constructor(private http: HttpClient) {}
-
-  quizes(): Observable<any> {
-    return this.http.get(this.quizData);
+  //get subjects from QUIZZES
+  getSubjects(): Observable<any[]> {
+    const quizzTitles = QUIZZES.map((quiz) => ({
+      title: quiz.title,
+      icon: quiz.icon,
+    }));
+    return new Observable((observer) => {
+      observer.next(quizzTitles);
+    });
   }
 }

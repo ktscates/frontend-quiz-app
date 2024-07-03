@@ -13,6 +13,9 @@ module.exports = {
         lightBlue: "#ABC1E1",
         green: "#26D782",
         red: "#EE5454",
+        orange: "#FF7E35",
+        green: "#2FD887",
+        blue: "#306AFF",
       },
       fontFamily: {
         primary: ["Rubik", "sans-serif"],

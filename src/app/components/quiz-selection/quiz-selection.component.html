@@ -10,37 +10,23 @@
     </p>
   </div>
   <div class="flex flex-col gap-5">
+    @for (subject of subjects; track $index) {
     <div
       class="flex justify-start gap-3 items-center bg-white w-full p-4 rounded-3xl shadow-lg"
     >
-      <div class="bg-[#FF7E35] rounded-lg bg-opacity-10 p-2">
-        <img src="../../assets/images/icon-html.svg" alt="icon" />
+      <div
+        [ngClass]="{
+              'bg-orange': subject.title === 'HTML',
+              'bg-green': subject.title === 'CSS',
+              'bg-blue': subject.title === 'JavaScript',
+              'bg-purple': subject.title === 'Accessibility',
+              }"
+        class="bg-opacity-10 p-2 rounded-lg"
+      >
+        <img [src]="subject.icon" alt="icon" />
       </div>
-      <h1 class="text-3xl text-darkNavy font-medium">HTML</h1>
+      <h1 class="text-3xl text-darkNavy font-medium">{{ subject.title }}</h1>
     </div>
-    <div
-      class="flex justify-start gap-3 items-center bg-white w-full p-4 rounded-3xl shadow-lg"
-    >
-      <div class="bg-[#2FD887] rounded-lg bg-opacity-10 p-2">
-        <img src="../../assets/images/icon-css.svg" alt="icon" />
-      </div>
-      <h1 class="text-3xl text-darkNavy font-medium">HTML</h1>
-    </div>
-    <div
-      class="flex justify-start gap-3 items-center bg-white w-full p-4 rounded-3xl shadow-lg"
-    >
-      <div class="bg-[#306AFF] rounded-lg bg-opacity-10 p-2">
-        <img src="../../assets/images/icon-js.svg" alt="icon" />
-      </div>
-      <h1 class="text-3xl text-darkNavy font-medium">HTML</h1>
-    </div>
-    <div
-      class="flex justify-start gap-3 items-center bg-white w-full p-4 rounded-3xl shadow-lg"
-    >
-      <div class="bg-purple rounded-lg bg-opacity-10 p-2">
-        <img src="../../assets/images/icon-accessibility.svg" alt="icon" />
-      </div>
-      <h1 class="text-3xl text-darkNavy font-medium">HTML</h1>
-    </div>
+    }
   </div>
 </div>

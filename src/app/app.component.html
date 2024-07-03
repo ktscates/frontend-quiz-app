@@ -2,5 +2,5 @@
   class="bg-lightGrey lg:bg-desktop-light md:bg-tablet-light bg-mobile-light lg:bg-cover lg:bg-no-repeat md:bg-no-repeat bg-no-repeat min-h-screen font-primary dark:bg-darkNavy lg:dark:bg-desktop-dark md:dark:bg-tablet-dark dark:bg-mobile-dark"
 >
   <app-header [switchThemes]="switchThemes.bind(this)" />
-  <app-quiz-selection />
+  <app-quiz-selection [subjects]="subjects"></app-quiz-selection>
 </div>
