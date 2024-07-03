@@ -24,9 +24,8 @@ export class AppComponent implements OnInit {
   }
 
   fetchSubjects(): void {
-    this.quizService.getSubjects().subscribe((subjects) => {
-      this.subjects = subjects;
-    });
+    this.subjects = this.quizService.getSubjects();
+
     console.log('subs', this.subjects);
   }
 

@@ -9,13 +9,11 @@ export class QuizService {
   constructor() {}
 
   //get subjects from QUIZZES
-  getSubjects(): Observable<any[]> {
+  getSubjects() {
     const quizzTitles = QUIZZES.map((quiz) => ({
       title: quiz.title,
       icon: quiz.icon,
     }));
-    return new Observable((observer) => {
-      observer.next(quizzTitles);
-    });
+    return quizzTitles;
   }
 }
