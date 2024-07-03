@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/667a360e-aa3d-41e8-b814-a3aba7150f1e/deploy-status)](https://app.netlify.com/sites/ktscates-frontend-quiz-app/deploys)
+
 # FrontendQuizApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
