@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
+import { HeaderComponent } from './components/header/header.component';
+import { QuizSelectionComponent } from './components/quiz-selection/quiz-selection.component';
 @Component({
   selector: 'app-root',
   standalone: true,
