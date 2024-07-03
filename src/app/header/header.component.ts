@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   //Specifies the custom HTML element (or directive) that represents this component in the parent component's template.
@@ -8,4 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  @Input()
+  switchThemes!: () => void;
+}
