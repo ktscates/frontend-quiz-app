@@ -11,4 +11,15 @@ import { HeaderComponent } from './header/header.component';
 })
 export class AppComponent {
   title = 'frontend-quiz-app';
+  switchedToDarkMode = false;
+
+  switchThemes = () => {
+    this.switchedToDarkMode = !this.switchedToDarkMode;
+    const body = document.querySelector('body');
+    if (this.switchedToDarkMode) {
+      body?.classList.add('dark');
+    } else {
+      body?.classList.remove('dark');
+    }
+  };
 }
