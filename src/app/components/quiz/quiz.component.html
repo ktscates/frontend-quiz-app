@@ -1,1 +1,42 @@
-<p>quiz works!</p>
+<div
+  class="md:w-4/6 md:mx-auto md:py-5 md:px-0 py-10 px-4 lg:grid lg:grid-cols-2 flex flex-col justify-between lg:gap-5 gap-16 font-primary"
+>
+  <div class="lg:w-4/5">
+    <p
+      class="lg:mt-10 mt-5 text-greyNavy md:text-sm dark:text-lightBlue text-sm italic"
+    >
+      Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}
+    </p>
+    <h1
+      class="text-darkNavy lg:mt-6 mt-5 md:text-3xl text-2xl font-semibold dark:text-white"
+    >
+      {{ currentQuestion.question }}
+    </h1>
+    <!-- <p class="lg:mt-10 mt-5 text-greyNavy dark:text-lightBlue text-lg italic">
+      Question {{ currentQuestionIndex + 1 }} of {{ questions.length }} 
+    </p> -->
+  </div>
+  <div class="flex flex-col gap-4">
+    @for (option of currentQuestion.options; track $index) {
+    <button
+      class="flex justify-start gap-3 items-center bg-white hover:bg-border hover:border-purple hover:bg-opacity-20 bg-opacity-80 cursor-pointer dark:bg-navy dark:bg-opacity-80 w-full p-4 rounded-2xl shadow"
+    >
+      <div class="bg-lightGrey px-4 py-2 rounded-lg">
+        <span class="text-xl text-greyNavy font-semibold">{{
+          "ABCD"[$index]
+        }}</span>
+      </div>
+      <h1 class="md:text-2xl text-xl text-darkNavy dark:text-white font-medium">
+        {{ option }}
+      </h1>
+    </button>
+    }
+    <div class="w-full mt-5">
+      <button
+        class="bg-purple w-full text-center md:text-xl font-semibold text-white p-5 rounded-2xl shadow"
+      >
+        Submit Answer
+      </button>
+    </div>
+  </div>
+</div>
