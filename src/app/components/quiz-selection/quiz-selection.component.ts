@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { QuizService } from '../../services/quiz.service';
 
 @Component({
   selector: 'app-quiz-selection',
@@ -8,6 +10,24 @@ import { CommonModule } from '@angular/common';
   templateUrl: './quiz-selection.component.html',
   styleUrl: './quiz-selection.component.css',
 })
-export class QuizSelectionComponent {
-  @Input() subjects: any[] = [];
+export class QuizSelectionComponent implements OnInit {
+  subjects: any[] = [];
+  questions: any[] = [];
+  selectedSubject = new EventEmitter<string>();
+
+  constructor(private router: Router, private quizService: QuizService) {}
+
+  ngOnInit(): void {
+    this.fetchSubjects();
+  }
+
+  fetchSubjects(): void {
+    this.subjects = this.quizService.getSubjects();
+    console.log('subs', this.subjects);
+  }
+
+  onSubjectSelected(subjectTitle: string) {
+    this.selectedSubject.emit(subjectTitle);
+    this.router.navigate(['/quiz', subjectTitle]);
+  }
 }

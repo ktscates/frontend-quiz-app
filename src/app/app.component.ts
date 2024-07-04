@@ -3,31 +3,17 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { QuizSelectionComponent } from './components/quiz-selection/quiz-selection.component';
 import { QuizService } from './services/quiz.service';
-import { HttpClientModule } from '@angular/common/http';
-
+import { QuizComponent } from './components/quiz/quiz.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, QuizSelectionComponent],
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'frontend-quiz-app';
   switchedToDarkMode = false;
-  subjects: any[] = [];
-
-  constructor(private quizService: QuizService) {}
-
-  ngOnInit(): void {
-    this.fetchSubjects();
-  }
-
-  fetchSubjects(): void {
-    this.subjects = this.quizService.getSubjects();
-
-    console.log('subs', this.subjects);
-  }
 
   switchThemes = () => {
     this.switchedToDarkMode = !this.switchedToDarkMode;

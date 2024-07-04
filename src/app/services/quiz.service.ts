@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { QUIZZES } from '../../data';
 
 @Injectable({
@@ -15,5 +14,10 @@ export class QuizService {
       icon: quiz.icon,
     }));
     return quizzTitles;
+  }
+
+  getQuestions(subjectTitle: string) {
+    const quizSubject = QUIZZES.find((quiz) => quiz.title === subjectTitle);
+    return quizSubject ? quizSubject.questions : [];
   }
 }
