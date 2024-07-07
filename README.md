@@ -1,29 +1,88 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/667a360e-aa3d-41e8-b814-a3aba7150f1e/deploy-status)](https://app.netlify.com/sites/ktscates-frontend-quiz-app/deploys)
 
-# FrontendQuizApp
+# Angular Quiz Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+## Table of Contents
 
-## Development server
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Running the App](#running-the-app)
+- [Components](#components)
+  - [QuizComponent](#quizcomponent)
+  - [HeaderComponent](#headercomponent)
+- [Services](#services)
+  - [QuizService](#quizservice)
+- [Customization](#customization)
+  - [Changing the Theme](#changing-the-theme)
+- [Live Link](#live-link)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Introduction
 
-## Code scaffolding
+This is a simple frontend quiz application built with Angular. The app allows users to select a quiz subject, answer multiple-choice questions, and receive feedback on their answers.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+- Select a quiz subject
+- Answer multiple-choice questions
+- Immediate feedback on answers (correct or incorrect)
+- Navigation through questions
+- Score tracking
+- Dark and light theme toggle
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Technologies Used
 
-## Running unit tests
+- Angular
+- TailwindCSS
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Getting Started
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clone the repository**:
 
-## Further help
+   ```bash
+   git clone https://github.com/ktscates/frontend-quiz-app.git
+   cd quiz-app
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+### Running the App
+
+    ```bash
+    ng serve
+    ```
+    Open your browser and navigate to `http://localhost:4200/`.
+
+## Components
+
+### QuizComponent
+
+The main component for the quiz functionality, handling question display, answer selection, and feedback.
+
+### HeaderComponent
+
+The header component.
+
+## Services
+
+### QuizService
+
+Service for fetching quiz questions.
+
+## Customization
+
+### Changing the Theme
+
+The application supports both light and dark themes. You can toggle the theme using the theme switcher component.
+
+## Live Link
+
+You can access the deployed application at [Frontend Quiz App](https://your-deployed-link.com).
