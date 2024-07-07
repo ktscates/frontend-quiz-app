@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/667a360e-aa3d-41e8-b814-a3aba7150f1e/deploy-status)](https://app.netlify.com/sites/ktscates-frontend-quiz-app/deploys)
 
-# Angular Quiz Application
+# Frontend Quiz App
 
 ## Table of Contents
 
@@ -45,7 +45,7 @@ This is a simple frontend quiz application built with Angular. The app allows us
 
    ```bash
    git clone https://github.com/ktscates/frontend-quiz-app.git
-   cd quiz-app
+   cd frontend-quiz-app
    ```
 
 2. **Install dependencies**:
@@ -85,4 +85,4 @@ The application supports both light and dark themes. You can toggle the theme us
 
 ## Live Link
 
-You can access the deployed application at [Frontend Quiz App](https://your-deployed-link.com).
+You can access the deployed application at [Frontend Quiz App](https://ktscates-frontend-quiz-app.netlify.app/).
