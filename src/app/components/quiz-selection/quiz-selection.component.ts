@@ -23,7 +23,6 @@ export class QuizSelectionComponent implements OnInit {
 
   fetchSubjects(): void {
     this.subjects = this.quizService.getSubjects();
-    console.log('subs', this.subjects);
   }
 
   onSubjectSelected(subjectTitle: string) {

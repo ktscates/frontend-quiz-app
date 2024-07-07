@@ -1,1 +1,49 @@
-<p>result works!</p>
+<div
+  class="md:w-4/6 md:mx-auto md:py-5 md:px-0 py-10 px-4 lg:grid lg:grid-cols-2 flex flex-col justify-between lg:gap-0 gap-16 font-primary"
+>
+  <div>
+    <h1 class="text-darkNavy md:text-6xl text-5xl font-thin dark:text-white">
+      Quiz Completed <br /><span class="font-medium">You scored...</span>
+    </h1>
+  </div>
+  <div>
+    <div
+      class="bg-white dark:bg-navy shadow-lg bg-opacity-80 rounded-2xl flex flex-col items-center justify-center gap-5 py-12"
+    >
+      <div class="flex items-center gap-2">
+        <div
+          [ngClass]="{
+              'bg-orange': subjectTitle === 'HTML',
+              'bg-green': subjectTitle === 'CSS',
+              'bg-blue': subjectTitle === 'JavaScript',
+              'bg-purple': subjectTitle === 'Accessibility',
+              }"
+          class="bg-opacity-15 dark:bg-opacity-25 p-1 rounded-lg"
+        >
+          @for(subject of subjects; track $index){ @if(subject.title ===
+          subjectTitle){
+          <img class="w-7 h-7" [src]="subject.icon" alt="icon" />
+
+          } }
+        </div>
+        <h1 class="text-lg text-darkNavy dark:text-white font-medium">
+          {{ subjectTitle }}
+        </h1>
+      </div>
+
+      <h1 class="text-9xl dark:text-white text-darkNavy">{{ score || 0 }}</h1>
+
+      <p class="text-greyNavy dark:text-lightBlue">
+        out of {{ questions.length }}
+      </p>
+    </div>
+    <div class="w-full mt-5">
+      <button
+        class="bg-purple hover:bg-opacity-50 w-full text-center md:text-xl font-semibold text-white p-5 rounded-2xl shadow"
+        (click)="playAgain()"
+      >
+        Play again
+      </button>
+    </div>
+  </div>
+</div>
