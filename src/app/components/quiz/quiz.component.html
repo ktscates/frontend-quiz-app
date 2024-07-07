@@ -1,9 +1,9 @@
 <div
   class="md:w-4/6 md:mx-auto md:py-5 md:px-0 py-10 px-4 lg:grid lg:grid-cols-2 flex flex-col justify-between lg:gap-5 gap-16 font-primary"
 >
-  <div class="lg:w-4/5">
+  <div class="flex flex-col lg:w-4/5">
     <p
-      class="lg:mt-10 mt-5 text-greyNavy md:text-sm dark:text-lightBlue text-sm italic"
+      class="lg:mt-0 mt-5 text-greyNavy md:text-sm dark:text-lightBlue text-sm italic"
     >
       Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}
     </p>
@@ -12,9 +12,14 @@
     >
       {{ currentQuestion.question }}
     </h1>
-    <!-- <p class="lg:mt-10 mt-5 text-greyNavy dark:text-lightBlue text-lg italic">
-      Question {{ currentQuestionIndex + 1 }} of {{ questions.length }} 
-    </p> -->
+    <div class="w-full bg-white dark:bg-navy rounded-full h-1.5 lg:mt-64 mt-12">
+      <div
+        class="bg-purple h-1.5 rounded-full"
+        [ngStyle]="{
+          width: ((currentQuestionIndex + 1) / questions.length) * 100 + '%'
+        }"
+      ></div>
+    </div>
   </div>
   <div class="flex flex-col gap-4">
     @for (option of currentQuestion.options; track $index) {
@@ -23,22 +28,23 @@
       (click)="selectAnswer(option)"
       [disabled]="answered"
       [ngClass]="{
+        'border-2 border-purple': option === selectedAnswer && !showResult,
         'border-2 border-green':
-          showResult && selectedAnswer === option && correctAnswer,
+          showResult && selectedAnswer === option && isAnswerCorrect,
         'border-2 border-red':
-          showResult && selectedAnswer === option && !correctAnswer,
-        'hover:border-2 hover:border-purple': !showResult
+          showResult && option === selectedAnswer && !isAnswerCorrect,
       }"
     >
       <div class="flex justify-start items-center gap-3">
         <span
           class="text-xl text-greyNavy font-semibold hover:bg-purple hover:bg-opacity-15 hover:text-purple px-4 py-2 rounded-lg"
           [ngClass]="{
+            'bg-purple text-white': option === selectedAnswer && !showResult,
             'bg-green text-white':
-              showResult && selectedAnswer === option && correctAnswer,
+              showResult && option === selectedAnswer && isAnswerCorrect,
             'bg-red text-white':
-              showResult && selectedAnswer === option && !correctAnswer,
-            'bg-lightGrey': !showResult
+              showResult && option === selectedAnswer && !isAnswerCorrect,
+            'bg-lightGrey': option !== selectedAnswer
           }"
           >{{ "ABCD"[$index] }}
         </span>
@@ -51,24 +57,50 @@
       </div>
       @if(showResult && selectedAnswer === option){
       <img
-        class="h-8 w-8 flex justi"
+        class="h-8 w-8 flex"
         [src]="
-          correctAnswer
+          isAnswerCorrect || option === correctAnswer
             ? '../../assets/images/icon-correct.svg'
             : '../../assets/images/icon-incorrect.svg'
         "
-        [alt]="correctAnswer ? 'correct' : 'incorrect'"
+        [alt]="isAnswerCorrect ? 'correct' : 'incorrect'"
+      />
+      } @else if(showResult && selectedAnswer !== option && option ===
+      correctAnswer && !isAnswerCorrect){
+      <img
+        class="h-8 w-8 flex"
+        src="../../assets/images/icon-correct.svg"
+        alt="correct"
       />
       }
     </button>
     }
     <div class="w-full mt-5">
+      @if(!showNextButton){
       <button
         class="bg-purple hover:bg-opacity-50 w-full text-center md:text-xl font-semibold text-white p-5 rounded-2xl shadow"
         (click)="submitAnswer()"
       >
         Submit Answer
       </button>
+      } @else {
+      <button
+        class="bg-purple hover:bg-opacity-50 w-full text-center md:text-xl font-semibold text-white p-5 rounded-2xl shadow"
+        (click)="nextQuestions()"
+      >
+        Next Question
+      </button>
+      }
     </div>
+    @if(showErrorMessage){
+    <div class="flex gap-2 justify-center items-center text-red">
+      <img
+        class="h-8 w-8"
+        src="../../assets/images/icon-incorrect.svg"
+        alt=""
+      />
+      <p>Please select an answer</p>
+    </div>
+    }
   </div>
 </div>

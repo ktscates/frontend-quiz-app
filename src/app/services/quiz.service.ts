@@ -16,8 +16,12 @@ export class QuizService {
     return quizzTitles;
   }
 
+  //get questions according to the subject title
   getQuestions(subjectTitle: string) {
-    const quizSubject = QUIZZES.find((quiz) => quiz.title === subjectTitle);
+    const quizSubject = QUIZZES.find(
+      (quiz) => quiz.title === subjectTitle && quiz.icon
+    );
+    // const subjectIcon =
     return quizSubject ? quizSubject.questions : [];
   }
 }

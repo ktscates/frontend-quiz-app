@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../../services/quiz.service';
 import { HeaderComponent } from '../header/header.component';
 import { CommonModule } from '@angular/common';
+import { ResultComponent } from '../result/result.component';
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [HeaderComponent, CommonModule],
+  imports: [CommonModule],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css',
 })
@@ -17,9 +18,12 @@ export class QuizComponent implements OnInit {
   currentQuestion: any = null;
   selectedAnswer: string | null = null;
   showResult = false;
-  correctAnswer: boolean | null = null;
+  correctAnswer: string | null = null;
+  isAnswerCorrect: boolean | null = null;
   score = 0;
   answered: boolean | null = null;
+  showErrorMessage = false;
+  showNextButton = false;
 
   constructor(
     private router: Router,
@@ -44,28 +48,45 @@ export class QuizComponent implements OnInit {
     this.selectedAnswer = null;
     this.showResult = false;
     this.answered = false;
+    this.showNextButton = false;
   }
 
   selectAnswer(option: string): void {
     if (!this.answered) {
       this.selectedAnswer = option;
-      this.showResult = true;
-      this.correctAnswer = this.selectedAnswer === this.currentQuestion.answer;
-      this.answered = true;
+      this.showErrorMessage = false;
+    }
+    console.log('option', option);
+  }
 
-      if (this.correctAnswer) {
+  submitAnswer(): void {
+    if (this.selectedAnswer === null) {
+      this.showErrorMessage = true;
+    } else {
+      this.showErrorMessage = false;
+      this.showResult = true;
+      this.isAnswerCorrect = this.selectedAnswer === this.correctAnswer;
+      this.answered = true;
+      this.showNextButton = true;
+      if (this.isAnswerCorrect) {
         this.score++;
       }
     }
   }
 
-  submitAnswer(): void {
+  nextQuestions(): void {
     if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.showErrorMessage = false;
       this.currentQuestionIndex++;
       this.loadQuestion(this.currentQuestionIndex);
     } else {
-      console.log('Quiz completed! Score:', this.score);
-      this.router.navigate(['/result']);
+      this.router.navigate(['/result'], {
+        state: {
+          score: this.score,
+          subjectTitle: this.subjectTitle,
+          questions: this.questions,
+        },
+      });
     }
   }
 }
