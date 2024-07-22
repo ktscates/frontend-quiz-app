@@ -13,7 +13,19 @@ describe('QuizService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should show the title', () => {
-    expect(service).to;
+  it('should get subjects', () => {
+    const subjects = service.getSubjects();
+    expect(subjects.length).toBeGreaterThan(0);
+  });
+
+  it('should get question from one subject', () => {
+    const subject = service.getSubjects()[3];
+    const questions = service.getQuestions(subject.title);
+    expect(questions.length).toBeGreaterThan(0);
+  });
+
+  it('should return an empty array for a nonexistent subject', () => {
+    const questions = service.getQuestions('Nonexistent Subject');
+    expect(questions).toEqual([]);
   });
 });
