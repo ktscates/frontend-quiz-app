@@ -56,7 +56,6 @@ export class QuizComponent implements OnInit {
       this.selectedAnswer = option;
       this.showErrorMessage = false;
     }
-    console.log('option', option);
   }
 
   submitAnswer(): void {
