@@ -12,4 +12,8 @@ describe('QuizService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should show the title', () => {
+    expect(service).to;
+  });
 });
