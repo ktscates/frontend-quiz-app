@@ -22,4 +22,15 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ["html", "text", "lcov", "json"],
   coverageDirectory: "coverage",
+
+  jest: {
+    coverageThreshold: {
+      global: {
+        branches: 65,
+        functions: 65,
+        lines: 65,
+        statements: 65,
+      },
+    },
+  },
 };
